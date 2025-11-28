@@ -32,8 +32,8 @@ jobs:
       run: mvn test --settings .maven/settings.xml -Dsecure.key="$KEY"
     - name: Upload MUnit reports
       uses: actions/upload-artifact@v4
-      with:
-        name: munit-test-reports
+      #with:
+      # name: munit-test-reports
        # path: target/site/munit/coverage/
 
   build:
