@@ -30,8 +30,8 @@ jobs:
         nexus_password: ${{ secrets.nexus_password }}
         KEY: ${{ secrets.decryption_key }}
       run: mvn test --settings .maven/settings.xml -Dsecure.key="$KEY"
-    - name: Upload MUnit reports
-      uses: actions/upload-artifact@v4
+    #- name: Upload MUnit reports
+     # uses: actions/upload-artifact@v4
       #with:
       # name: munit-test-reports
        # path: target/site/munit/coverage/
