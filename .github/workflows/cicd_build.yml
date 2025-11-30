@@ -100,5 +100,5 @@ jobs:
          -Danypoint.password="$PASSWORD" 
          -Dconn.app.client.id= "$CLOUDHUB_ID" \		 
          -Dconn.app.client.secret="$CLOUDHUB_SECRET" \
-         -Denvironment=Sandbox -DworkerType=MICRO -Dregion=us-east-2 -Dworkers=1 -DapplicationName=gitactions-poc 
+         -Denvironment=Dev -DworkerType=MICRO -Dregion=us-east-2 -Dworkers=1 -DapplicationName=gitactions-poc 
         # -Ddecryption.key="$KEY"
