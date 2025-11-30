@@ -88,8 +88,8 @@ jobs:
       env:
         USERNAME: ${{ secrets.anypoint_platform_username }}
         PASSWORD: ${{ secrets.anypoint_platform_password }}
-        #CLOUDHUB_ID: ${{ secrets.CLOUDHUB_ID }}
-        #CLOUDHUB_SECRET: ${{ secrets.CLOUDHUB_SECRET }}
+        CLOUDHUB_ID: ${{ secrets.CLOUDHUB_ID }}
+        CLOUDHUB_SECRET: ${{ secrets.CLOUDHUB_SECRET }}
         #KEY: ${{ secrets.decryption_key }}
       run: |
         artifactName=$(ls *.jar | head -1)
@@ -97,6 +97,6 @@ jobs:
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" 
-        # -Dconn.app.client.id= "$CLOUDHUB_ID" \		 
-        # -Dconn.app.client.secret="$CLOUDHUB_SECRET" \
+         -Dconn.app.client.id= "$CLOUDHUB_ID" \		 
+         -Dconn.app.client.secret="$CLOUDHUB_SECRET" \
         # -Ddecryption.key="$KEY"
