@@ -50,7 +50,7 @@
 					-->	
 						<!-- End: SECURED PROPERTIES CI/CD -->
 					</cloudHubDeployment>
-					<classifier>mule-application</classifier>
+					<classifier>mule-application-sandbox</classifier>
 				</configuration>
 			</plugin>
 		</plugins>
