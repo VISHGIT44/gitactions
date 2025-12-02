@@ -95,11 +95,12 @@ jobs:
         artifactName=$(ls *.jar | head -1)
         #mvn -e -X clean -Dmule.environment=Sandbox deploy -DskipMunitTests -DmuleDeploy \
          mvn -e -X clean deploy -DskipMunitTests -DmuleDeploy \
-         mvn -e -X clean deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" 
-         -Dconn.app.client.id= "$CLOUDHUB_ID" \		 
-         -Dconn.app.client.secret="$CLOUDHUB_SECRET" \
+         #-Dconn.app.client.id= "$CLOUDHUB_ID" \		 
+         #-Dconn.app.client.secret="$CLOUDHUB_SECRET" \
+         -DId:884f829be9a74c299ee879ca34499267 \
+         -DSecret:0dCad2cBC55243B3aB545d61CaFB755a \
          -Denvironment=Dev -DworkerType=MICRO -Dregion=us-east-2 -Dworkers=1 -DapplicationName=gitactions-poc 
         # -Ddecryption.key="$KEY"
