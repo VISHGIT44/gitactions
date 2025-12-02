@@ -26,8 +26,10 @@ jobs:
         java-version: 17
     - name: Test with Maven
       env:
-        nexus_username: ${{ secrets.nexus_username }}
-        nexus_password: ${{ secrets.nexus_password }}
+        #nexus_username: ${{ secrets.nexus_username }}
+        #nexus_password: ${{ secrets.nexus_password }}
+        username: "VISHALGIT"
+        password: "Vishal#1234567"
        # KEY: ${{ secrets.decryption_key }}
       run: mvn test #--settings .maven/settings.xml -Dsecure.key="$KEY"
     #- name: Upload MUnit reports
