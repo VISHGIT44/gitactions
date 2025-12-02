@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>cab67e4c-df8e-4ea7-a2bf-88e127e092b1</groupId>
+	<groupId>com.mycompany</groupId>
 	<artifactId>gitactions</artifactId>
 	<version>1.0.0</version>
 	<packaging>mule-application</packaging>
@@ -15,8 +15,9 @@
 
 		<app.runtime>4.9.0</app.runtime>
 		<mule.maven.plugin.version>4.3.0</mule.maven.plugin.version>
-		<app.name>github-actions-poc</app.name>
+		<app.name>gitactions-poc</app.name>
 		<env>Sandbox</env>
+		<munit.version>3.4.0</munit.version>
 	</properties>
 
 	<build>
@@ -43,14 +44,75 @@
 						<region>us-east-2</region>
 						<workers>1</workers>
 						<objectStoreV2>true</objectStoreV2>
-						<!-- Start: SECURED PROPERTIES CI/CD 
+						<!-- Start: SECURED PROPERTIES CI/CD -->
 						<properties>
 							<secure.key>${decryption.key}</secure.key>
 						</properties>
-					-->	
 						<!-- End: SECURED PROPERTIES CI/CD -->
 					</cloudHubDeployment>
-					<classifier>mule-application-sandbox</classifier>
+					<classifier>mule-application</classifier>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.mulesoft.munit.tools</groupId>
+				<artifactId>munit-maven-plugin</artifactId>
+				<version>${munit.version}</version>
+				<executions>
+					<execution>
+						<id>test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+							<goal>coverage-report</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<coverage>
+						<runCoverage>true</runCoverage>
+						<formats>
+							<format>html</format>
+						</formats>
+					</coverage>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.mulesoft.munit.tools</groupId>
+				<artifactId>munit-maven-plugin</artifactId>
+				<version>${munit.version}</version>
+				<executions>
+					<execution>
+						<id>test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+							<goal>coverage-report</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- START: MUnit coverage -->
+					<environmentVariables>
+						<secure.key>${decryption.key}</secure.key>
+					</environmentVariables>
+					<!-- END: MUnit coverage -->
+					<coverage>
+						<runCoverage>true</runCoverage>
+						<!-- START: MUnit coverage -->
+						<failBuild>true</failBuild>
+    					<requiredApplicationCoverage>50</requiredApplicationCoverage>
+						<!-- <requiredResourceCoverage>50</requiredResourceCoverage> -->
+						<!-- <requiredFlowCoverage>50</requiredFlowCoverage> -->
+						<!-- END: MUnit coverage -->
+						<formats>
+							<!-- START: MUnit coverage -->
+							<format>console</format>
+							<format>sonar</format>
+							<format>json</format>
+							<!-- END: MUnit coverage -->
+							<format>html</format>
+						</formats>
+					</coverage>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -68,6 +130,26 @@
 			<artifactId>mule-sockets-connector</artifactId>
 			<version>1.2.5</version>
 			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-runner</artifactId>
+			<version>3.4.0</version>
+			<classifier>mule-plugin</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-tools</artifactId>
+			<version>3.4.0</version>
+			<classifier>mule-plugin</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.weave</groupId>
+			<artifactId>assertions</artifactId>
+			<version>1.2.1</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
