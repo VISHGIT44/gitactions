@@ -95,6 +95,7 @@ jobs:
         artifactName=$(ls *.jar | head -1)
         #mvn -e -X clean -Dmule.environment=Sandbox deploy -DskipMunitTests -DmuleDeploy \
          mvn -e -X clean deploy -DskipMunitTests -DmuleDeploy \
+         mvn -e -X clean deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" 
