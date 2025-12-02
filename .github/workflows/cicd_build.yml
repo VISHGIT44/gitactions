@@ -94,10 +94,10 @@ jobs:
       run: |
         artifactName=$(ls *.jar | head -1)
         #mvn -e -X clean -Dmule.environment=Sandbox deploy -DskipMunitTests -DmuleDeploy \
-         mvn -e -X clean deploy -DskipMunitTests -DmuleDeploy \
+        mvn -e -X clean deploy -DskipMunitTests -DmuleDeploy \
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
-         -Danypoint.password="$PASSWORD" 
+         -Danypoint.password="$PASSWORD" \ 
          #-Dconn.app.client.id= "$CLOUDHUB_ID" \		 
          #-Dconn.app.client.secret="$CLOUDHUB_SECRET" \
          -DId:884f829be9a74c299ee879ca34499267 \
